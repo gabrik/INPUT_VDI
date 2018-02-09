@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block content %}
+<div class="wrapper">
+    <div class="page content-wrapper">
+        <div class="container-fluid">
+            {% if currentChannel['idContentProvider'] != 0 %}
+            <div class="jumbotron">
+                <p align="center">You are currently viewing {{ currentChannel['name'] }} 
+                {%if currentChannel['device']== "1" %}
+                    on smartphone
+                {% elif currentChannel['device']== "2" %}
+                    on dlna
+                {% elif currentChannel['device']== "3" %}
+                    on both
+                {% endif %}
+                    </p>
+                <p align="center">
+                    <a class="btn btn-lg btn-danger" href="{{ url_for('stopStream',idContentProvider=currentChannel['idContentProvider']) }}" role="button">Stop transmission</a>
+                </p>
+            </div>
+            {% endif %}
+            <h1>
+                Benvenuto nella tua Virtual Decoder Interface
+            </h1>
+            <h2 style="font-family: Helvetica Neue, Helvetica, Arial, sans-serif;">
+                Seleziona un content provider dal menù a sinistra ed inizia a vedere i tuoi programmi preferiti
+            </h2>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+<div class="container">
+    <!-- Static navbar >
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" style="font-family: Kaushan Script" href="http://www.input-project.eu/">Input Project</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">About</a></li>
+            </ul>
+          </div><!--/.nav-collapse>
+        </div><!--/.container-fluid >
+      </nav-->
+    {% with errors = get_flashed_messages(category_filter=["success"]) %} {% if errors %}
+    <div class="alert alert-success">
+      {%- for msg in errors %}
+      <b>{{ msg }}</b> {% endfor -%}
+    </div>
+    {% endif %} {% endwith %}
+    <!-- Main component for a primary marketing message or call to action -->
+    {% if viewing_channel['idContentProvider'] != 0 %}
+    <div class="jumbotron">
+      <p align="center">You are currently viewing {{ viewing_channel['name'] }}</p>
+      <p align="center">
+        <a class="btn btn-lg btn-danger" href="{{url_for('stopStream',id_prog=viewing_channel['idContentProvider']) }}" role="button">Stop transmission</a>
+      </p>
+    </div>
+    {% endif %}

@@ -1,0 +1,50 @@
+{% extends "base.html" %} {% block content %}
+<div class="wrapper">
+    <div class="page-content-wrapper ">
+        <div class="container-fluid ">
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading">
+                    <h2>{{provider_nome}}</h2>
+                </div>
+            </div>
+            <div style="width: 50%;margin: 0 auto;">
+                <div class="btn-toolbar" role="group">
+                    <div class="btn-group btn-block">
+                        <button id="hide-button" class="btn btn-lg btn-info btn-block">Clicca qui per mostrare il palinsesto</button>
+                    </div>
+                    <div class="btn-group btn-block">
+                        <button id="play-button" class="btn btn-lg btn-success btn-block" data-href="{{url_for('getStream',idContentProvider=channels[0]['idContentProvider']) }}">Clicca qui per iniziare a vedere il programma</button>
+                    </div>
+                </div>
+            </div>
+            </p>
+            <div class="panel-body">
+                <table class="table table-striped table-hover" id="hide-table">
+                    <thead>
+                        <tr>
+                            <th>Nome Programma</th>
+                            <th>Descrizione</th>
+                            <th>Durata</th>
+                            <th>Inizio</th>
+                            <th>Logo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for channel in channels %}
+                        <tr class="clickable-row" data-href="{{url_for('getStream',idContentProvider=channel['idContentProvider']) }}">
+                            <th scope=row>{{channel['name']}}</th>
+                            <th scope=row>{{channel['description']}}</th>
+                            <th scope=row>{{channel['length']}}</th>
+                            <th scope=row>{{channel['startingTime']}}</th>
+                            <th scope=row><img src="{{channel['image']}}"></img>
+                            </th>
+                            {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,75 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width initial-scale=1">
+    <title>Welcome to your Virtual Decoder Interface</title>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/sidebar.css') }}">
+    <!-- link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/navbar.css') }}"-->
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='Kaushan/Kaushan-Script.css') }}">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="{{url_for('Virtualdecoderinterface')}}" style="font-family:'Kaushan Script'">
+                        Virtual decoder Interface
+                    </a>
+                </li>
+                <li class="border">Content provider list</li>
+                {% for row in providerList %}
+                <li> <a href="{{ url_for('getChannels' , providerId=row['idContentProvider']) }}"> {{ row['name'] }}</a></li>
+                {% endfor %}
+            </ul>
+            <h3 class="foot"> &copy; InputProject 2014</li>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="page-content-wrapper ">
+            <div class="container-fluid ">
+                {% with success = get_flashed_messages(category_filter=["success"]) %} {% if success %}
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>                    {%- for msg in success %} {{ msg|safe }} {% endfor -%}
+                </div>
+                {% endif %} {% endwith %} {% with errors = get_flashed_messages(category_filter=["errors"]) %} {% if errors %}
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>                    {%- for msg in errors %} {{ msg|safe }} {% endfor -%}
+                </div>
+                {% endif %} {% endwith %} {% if currentChannel['idContentProvider'] != 0 %} {% endif %}
+            </div>
+        </div>
+    </div>
+    {%block content%}{% endblock%}
+
+</body>
+<script src="{{ url_for('static', filename='jquery/jquery.min.js')}}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+<script>
+    jQuery(document).ready(function ($) {
+        $(".clickable-row").click(function () {
+            window.location = $(this).data("href");
+        });
+    });
+    jQuery(document).ready(function ($) {
+        $("#play-button").click(function(){
+            window.location=$(this).data("href");
+    });
+    });
+    jQuery(document).ready(function ($) {
+        $("#hide-button").click(function () {
+            if ($("#hide-table").is(":visible")) {
+                $("#hide-table").hide()
+            }
+            else {
+                $("#hide-table").show()
+            }
+        });
+    });
+
+</script>
+
+</html>

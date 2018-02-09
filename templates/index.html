@@ -1,0 +1,32 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+  <title>Welcome to your Virtual Decoder Interface</title>
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/navbar.css') }}">
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='Kaushan/Kaushan-Script.css') }}">
+
+</head>
+<body>
+<header>
+  <div class="container">
+      <div class="header-top">
+        <a href="http://www.input-project.eu"><h3 class="text-muted" style="font-family:Kaushan Script" >Input Project </h3></a>
+      </div>
+  
+         <div class="header-content">
+            <div class="header-content-inner">
+                <h1 id="homeHeading">Welcome to your Virtual Decoder Interface</h1>
+                <hr>
+                <p>Start now, see your favorite channel</p>
+                <a href="{{url_for('Virtualdecoderinterface')}}" class="btn btn-primary btn-xl page-scroll">Enter</a>
+            </div>
+        </div>
+    </div>
+</header>
+</body>
+<script src="{{ url_for('static', filename='jquery/jquery.min.js')}}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js')}}"></script>
+</html>

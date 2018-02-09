@@ -1,0 +1,130 @@
+body {
+    overflow-x: hidden;
+ }
+
+.wrapper {
+    padding-left: 300px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 300px;
+    width: 300px;
+    height: 100%;
+    margin-left: -300px;
+    overflow-y: auto;
+    background: #000;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.wrapper .sidebar-wrapper {
+    width: 300px;
+}
+.wrapper .sidebar-wrapper .foot{
+    position: absolute;
+    bottom: 0px;
+}
+
+.page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+.wrapper .page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 350px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li  {
+    color: #998990;
+    text-indent: 20px;
+    line-height: 40px;
+    padding-top: 20px;
+    
+}
+
+.sidebar-nav li.border {
+    font-size: 18px;
+    padding-top: 50;
+    border-bottom: 2px solid #e5e5e5;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    font-size: 16;
+    color: #999999;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+}
+
+
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 30px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+    font-size: 18px;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+@media(min-width:768px) {
+    .wrapper{
+        padding-left: 300px;
+    }
+
+    .sidebar-wrapper {
+        width: 300;
+    }
+
+    .wrapper.sidebar-wrapper {
+        width: 300px;
+    }
+
+    .page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    .wrapper .page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}
